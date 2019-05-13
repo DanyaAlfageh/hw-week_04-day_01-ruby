@@ -26,6 +26,10 @@ upper_case_full_names = []
 ```
 
 ### Answer
+upper_case_full_names = students.collect
+    { 
+        |x| x.dig(:first_name).upcase + " " + x.dig(:last_name).upcase
+    }
 
 ```rb
 
@@ -81,6 +85,10 @@ first_order_for_each_user = []
 ```
 
 ### Answer
+first_order_for_each_user = users.collect
+{
+    |x| x.dig(:orders,0)
+}
 
 ```rb
 
@@ -151,6 +159,45 @@ coffee_average_per_person = []
 ```
 
 ### Answer
+
+count=0
+f=0.0
+sum=0.0
+arr1=[]
+arr2=[]
+people.select{|x| arr1.push(x[:name])
+x.each do |(key, value)|
+    if value.is_a?(Array)
+        value.select{|y|
+        y.each do |(s_key, s_value)|
+            if(s_value.eql?("COFFEE"))
+                f=y[:amount]
+                sum=sum+f.to_f
+                count=count+1  
+            end
+        end
+    }
+            arr1.push(sum)
+            arr1.push(count)
+        end
+    sum=0
+    count=0
+end
+
+}
+arr1.each_index do |x| 
+        if(arr1.fetch(x).eql?("Samah"))
+            arr2.push({[:name]=>arr1.fetch(x),[:coffee_average]=>arr1.fetch(x+1)/arr1.fetch(x+2)})
+        end
+        if(arr1.fetch(x).eql?("Nader"))
+            arr2.push({[:name]=>arr1.fetch(x),[:coffee_average]=>arr1.fetch(x+1)/arr1.fetch(x+2)})
+        end
+        if(arr1.fetch(x).eql?("Jawaher"))
+            arr2.push({[:name]=>arr1.fetch(x),[:coffee_average]=>arr1.fetch(x+1)/arr1.fetch(x+2)})
+        end
+end
+
+
 
 ```rb
 
